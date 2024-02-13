@@ -20,7 +20,7 @@ const AlumnoSchema = Schema({
     role:{
         type: String,
         require: true,
-        enum: ["ADMIN_ROLE", "USER_ROLE"]
+        enum: ["ADMIN_ROLE", "ALUMO_ROLE"]
     },
     estado:{
         type: Boolean,
@@ -32,10 +32,10 @@ const AlumnoSchema = Schema({
     }
 });
 
-UsuarioSchema.methods.toJSON = function(){
-    const{ __v, password, _id, ...usuario} = this.toObject();
-    usuario.uid = _id;
-    return usuario;
+AlumnoSchema.methods.toJSON = function(){
+    const{ __v, password, _id, ...alumno} = this.toObject();
+    alumno.uid = _id;
+    return alumno;
 };
 
-module.exports = model('Usuario', UsuarioSchema);
+module.exports = model('Alumno', AlumnoSchema);
